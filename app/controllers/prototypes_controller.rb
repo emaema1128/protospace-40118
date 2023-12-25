@@ -32,10 +32,11 @@ class PrototypesController < ApplicationController
   end
 
   def update
-    prototype = Prototype.find(params[:id])
-    prototype.update(prototype_params)
-    redirect_to prototype_path  
-    # ビューファイルへツイート情報を受け渡す必要がないため、インスタンス変数は使用しません。
+    if @prototype.update(prototype_params)
+      redirect_to prototype_path
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy
