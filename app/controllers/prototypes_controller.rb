@@ -34,7 +34,7 @@ class PrototypesController < ApplicationController
   def update
     prototype = Prototype.find(params[:id])
     prototype.update(prototype_params)
-    redirect_to root_path  
+    redirect_to prototype_path  
     # ビューファイルへツイート情報を受け渡す必要がないため、インスタンス変数は使用しません。
   end
 
